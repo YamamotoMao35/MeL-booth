@@ -1,0 +1,14 @@
+<div class="contents row">
+  <div class="container">
+    <%= form_with(model: @tweet, url: tweets_path, html: {method: :post}) do |f| %>
+      <h3>
+        投稿する
+      </h3>
+      <div style ="margin: 8px 0">
+        <%= f.text_field :image, placeholder: 'image_url',type: 'text', name: 'image',value: '' %>
+        <%= f.text_area :text, placeholder: "text",name: 'text', style: {cols: 30, rows: 10} %>
+        <%= f.submit "SENT" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="contents row">
+  <%= form_with(url:"/tweets/#{@tweet.id}", :method => :patch) do |f| %>
+    <h3>
+      編集する
+    </h3>
+    <%= f.text_field :image,placeholder: "Image Url", type:"text", name:"image", autofocus: "true" %>
+    <%= f.text_area :text,placeholder: "text",name: "text", style: {cols: 30, rows: 10} %>
+    <%= f.submit "SENT" %>
+  <% end %>
+</div>
