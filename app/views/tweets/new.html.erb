@@ -2,7 +2,7 @@
   <div class="container">
     <%= form_with(model: @tweet, url: tweets_path, html: {method: :post}) do |f| %>
       <h3>
-        投稿する
+        新規投稿
       </h3>
       <div style ="margin: 8px 0">
         <%= f.text_field :image, placeholder: 'image_url',type: 'text', name: 'image',value: '' %>

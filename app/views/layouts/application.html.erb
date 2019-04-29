@@ -1,33 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="js">
   <head>
     <title>MeL-booth</title>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script type="text/javascript">
-      WebFontConfig = {
-        google: { families: [ 'Unica+One::latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
+        WebFontConfig = {
+          google: { families: [ 'Unica+One::latin' ] }
+        };
+        (function() {
+          var wf = document.createElement('script');
+          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+          wf.type = 'text/javascript';
+          wf.async = 'true';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(wf, s);
+        })();
     </script>
-  </head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   </head>
 
   <body>
-    <header class="header">
-      <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">PicTweet</a></h1>
+  <!-- Bootstrap core CSS -->
+  <link href="app/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="app/stylesheets/heroic-features.css" rel="stylesheet">
+
+  <nav class="navbar navbar-expand-lg navbar-light  bg-info fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">MeL-booth</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-            <div class="user_nav grid-6">
+            <div class="user_nav grid-5">
               <span><%= current_user.nickname %>
                 <ul class="user__info">
                   <li>
@@ -36,7 +55,7 @@
                   </li>
                 </ul>
               </span>
-              <a class="post" href="/tweets/new">投稿する</a>
+              <a class="post" href="/tweets/new">新規投稿</a>
             </div>
           <% else %>
             <div class="grid-6">
@@ -44,15 +63,22 @@
               <%= link_to "新規登録", new_user_registration_path, :class => 'post' %>
             </div>
           <% end %>
+        </ul>
       </div>
-    </header>
+    </div>
+  </nav>
 
-    <%= yield %>
+    <div class="container" >
+      <%= yield %>
+    </div>
 
-    <footer>
-      <p>
-        Copyright MeL-booth 2019.
-      </p>
+    <footer class="py-2 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; MeL-booth 2019</p>
+    </div>
     </footer>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
