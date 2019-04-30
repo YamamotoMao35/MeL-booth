@@ -46,24 +46,37 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-              <div class="user_nav grid-5">
-                <div class="d-flex">
-                  <li class="nav-item">
-                    <a href="/users/<%= current_user.id %>">マイページ</a>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                  </li>
-                  <li class="nav-item">
-                    <a class="post" href="/tweets/new">新規投稿</a>
-                  </li>
-                </div>
-              </div>
+            <div class="d-flex">
+              <li class="nav-item mx-2">
+                <button type="button" class="btn btn-outline-light bg-light">
+                  <a href="/users/<%= current_user.id %>">マイページ</a>
+                </button>
+              </li>
+              <li class="nav-item mx-2">
+                <button type="button" class="btn btn-outline-light bg-light">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </button>
+              </li>
+              <li class="nav-item mx-2">
+                <button type="button" class="btn btn-outline-light bg-light">
+                  <a class="post" href="/tweets/new">新規投稿</a>
+                </button>
+              </li>
             </div>
           <% else %>
             <div class="grid-6">
-              <%= link_to "ログイン", new_user_session_path, :class => 'post' %>
-              <%= link_to "新規登録", new_user_registration_path, :class => 'post' %>
+              <div class="d-flex">
+                <li class="nav-item mx-2">
+                  <button type="button" class="btn btn-outline-light bg-light">
+                    <%= link_to "ログイン", new_user_session_path, :class => 'post' %>
+                  </button>
+                </li>
+                <li class="nav-item mx-2">
+                  <button type="button" class="btn btn-outline-light bg-light">
+                    <%= link_to "新規登録", new_user_registration_path, :class => 'post' %>
+                  </button>
+                </li>
+              </div>
             </div>
           <% end %>
         </ul>
@@ -76,9 +89,9 @@
     </div>
 
     <footer class="py-2 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; MeL-booth 2019</p>
-    </div>
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; MeL-booth 2019</p>
+      </div>
     </footer>
 
     <script src="vendor/jquery/jquery.min.js"></script>

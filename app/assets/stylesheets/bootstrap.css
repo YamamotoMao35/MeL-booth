@@ -537,8 +537,7 @@ pre code {
 
 .container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 0 15px 0;
   margin-right: auto;
   margin-left: auto;
 }
@@ -1993,6 +1992,7 @@ textarea.form-control {
 
 .form-group {
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .form-text {
@@ -5086,9 +5086,11 @@ a.badge-dark:hover, a.badge-dark:focus {
 
 .jumbotron {
   padding: 2rem 1rem;
-  margin-bottom: 2rem;
+  margin: 5rem auto;
   background-color: #e9ecef;
   border-radius: 0.3rem;
+  border: solid;
+  height: 40%;
 }
 
 @media (min-width: 576px) {
@@ -5738,7 +5740,7 @@ a.close.disabled {
   align-items: center;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 0 15px 0;
   border-top: 1px solid #e9ecef;
   border-bottom-right-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;

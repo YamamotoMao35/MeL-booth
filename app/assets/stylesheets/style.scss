@@ -214,7 +214,7 @@ header.header {
 div.contents.row {
   h2 {
     @include boxBase(20px 0, 0);
-    font-weight: normal;
+    padding: 50px;
     strong {
       font-weight: bold;
       padding-right: 5px;
