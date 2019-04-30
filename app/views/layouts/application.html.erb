@@ -46,16 +46,19 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-            <div class="user_nav grid-5">
-              <span><%= current_user.nickname %>
-                <ul class="user__info">
-                  <li>
+              <div class="user_nav grid-5">
+                <div class="d-flex">
+                  <li class="nav-item">
                     <a href="/users/<%= current_user.id %>">マイページ</a>
+                  </li>
+                  <li class="nav-item">
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                   </li>
-                </ul>
-              </span>
-              <a class="post" href="/tweets/new">新規投稿</a>
+                  <li class="nav-item">
+                    <a class="post" href="/tweets/new">新規投稿</a>
+                  </li>
+                </div>
+              </div>
             </div>
           <% else %>
             <div class="grid-6">
