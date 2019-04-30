@@ -8,21 +8,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <script type="text/javascript">
-        WebFontConfig = {
-          google: { families: [ 'Unica+One::latin' ] }
-        };
-        (function() {
-          var wf = document.createElement('script');
-          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-          wf.type = 'text/javascript';
-          wf.async = 'true';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -49,7 +34,7 @@
             <div class="d-flex">
               <li class="nav-item mx-2">
                 <button type="button" class="btn btn-outline-light bg-light">
-                  <a href="/users/<%= current_user.id %>">マイページ</a>
+                  <%= link_to  "マイページ", user_path(current_user) %>
                 </button>
               </li>
               <li class="nav-item mx-2">
@@ -59,7 +44,7 @@
               </li>
               <li class="nav-item mx-2">
                 <button type="button" class="btn btn-outline-light bg-light">
-                  <a class="post" href="/tweets/new">新規投稿</a>
+                  <%= link_to "新規投稿", new_tweet_path(current_user), method: :get %>
                 </button>
               </li>
             </div>

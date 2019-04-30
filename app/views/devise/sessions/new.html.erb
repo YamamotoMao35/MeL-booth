@@ -3,7 +3,7 @@
     <div class="jumbotron bg-light">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <form>
-          <h5>log in</h5>
+          <h2 class="text-primary">ログインしてね</h2>
           <div class="form-group">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true %>
