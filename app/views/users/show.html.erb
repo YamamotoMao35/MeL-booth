@@ -1,9 +1,15 @@
 <div class="contents row" >
-  <p><%= @nickname %>さんの投稿一覧</p>
-  <% @tweets.each do |tweet| %>
-    <div class="content_post" style="background-image: url(<%= tweet.image %>);">
-      <%= simple_format(tweet.text) %>
-    </div>
-  <% end %>
-  <%= paginate(@tweets) %>
+  <div class="jumbotron bg-light">
+    <h2 class="text-success"><%= @nickname %>さんの投稿一覧</h2>
+    <% @tweets.each do |tweet| %>
+      <div class="content_post text-center" style="background-image: url(<%= tweet.image %>);">
+        <%= simple_format(tweet.text) %>
+      </div>
+    <% end %>
+    <ul class="pagination">
+    <li class="page-item">
+      <%= will_paginate @tweets, render: BootstrapPagination::Rails, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+    </li>
+  </ul>
+  </div>
 </div>

@@ -16,7 +16,11 @@
           <% @tweets.each do |tweet| %>
             <%= render partial: "tweet", locals: {tweet:tweet} %>
           <% end %>
-          <%= paginate(@tweets) %>
+        <ul class="pagination">
+          <li class="page-item">
+            <%= will_paginate @tweets, render: BootstrapPagination::Rails, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+          </li>
+        </ul>
         </div>
       </div>
     </div>

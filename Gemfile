@@ -68,5 +68,5 @@ gem 'devise'
 gem 'bootstrap', '4.3.1'
 gem 'jquery-rails'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate-bootstrap'
 
