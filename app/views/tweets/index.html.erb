@@ -10,23 +10,32 @@
       <p class="lead">商品にコメントよろしく〜</p>
     </header>
 
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="row text-center">
-        <div class="card-body">
-          <% @tweets.each do |tweet| %>
-            <%= render partial: "tweet", locals: {tweet:tweet} %>
-          <% end %>
+      <div class="d-flex">
+        <% @tweets.each do |tweet| %>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+              <div class="card-body">
+                <h4 class="card-title">商品</h4>
+                <p class="card-text">text</p>
+              </div>
+              <div class="card-footer">
+                <a href="" class="btn btn-primary">詳細</a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <nav aria-label=" ">
         <ul class="pagination">
-          <li class="page-item">
+          <li class="page-item mx-5" >
             <%= will_paginate @tweets, render: BootstrapPagination::Rails, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
           </li>
         </ul>
-        </div>
-      </div>
-    </div>
-
+      </nav>
   </div>
 
 </body>
 
 </html>
+

@@ -3,12 +3,7 @@ class TweetsController < ApplicationController
   before_action :move_to_index, except: :index
 
   def index
-    @tweets = Tweet.includes(:user).paginate(page: params[:page], per_page: 5).order('created_at DESC')
-  end
-
-  def show
-    @tweet = Tweet.find(params[:id])
-    @comments = @tweet.comments.includes(:user)
+    @tweets = Tweet.includes(:user).paginate(page: params[:page], per_page: 4).order('created_at DESC')
   end
 
   def new
@@ -17,6 +12,11 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.create(tweet_params)
+  end
+
+  def show
+    @tweet = Tweet.find(params[:id])
+    @comments = @tweet.comments.includes(:user)
   end
 
   def destroy

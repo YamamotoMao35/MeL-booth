@@ -1,15 +1,23 @@
 <div class="contents row" >
-  <div class="jumbotron bg-light">
-    <h2 class="text-success"><%= @nickname %>さんの投稿一覧</h2>
-    <% @tweets.each do |tweet| %>
-      <div class="content_post text-center" style="background-image: url(<%= tweet.image %>);">
-        <%= simple_format(tweet.text) %>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h2 class="text-success"><%= @nickname %>さんの投稿一覧</h2>
+      <div class="d-flex">
+        <% @tweets.each do |tweet| %>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="content_post text-center float-left " style="background-image: url(<%= tweet.image %>);">
+                <%= simple_format(tweet.text) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <ul class="pagination">
-    <li class="page-item">
-      <%= will_paginate @tweets, render: BootstrapPagination::Rails, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-    </li>
-  </ul>
+      <ul class="pagination">
+        <li class="page-item ">
+          <%= will_paginate @tweets, render: BootstrapPagination::Rails, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
