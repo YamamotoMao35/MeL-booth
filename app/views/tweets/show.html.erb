@@ -1,31 +1,35 @@
 <div class ="contents row">
-  <div class="content_post" style="background-image: url(<%= @tweet.image %>);">
-    <% if user_signed_in? && current_user.id == @tweet.user_id %>
-      <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
-      <ul class="more_list">
-        <li>
-          <%= link_to '編集', "/tweets/#{@tweet.id}/edit", method: :get %>
-        </li>
-        <li>
-          <%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete %>
-        </li>
-      </ul>
-    </div>
-    <% end %>
-    <%= simple_format(@tweet.text) %>
-    <span class="name">
-      <a href="/users/<%= @tweet.user.id %>">
-        <span>投稿者</span><%= @tweet.user.nickname %>
-      </a>
-    </span>
+  <div class="jumbotron bg-light">
+    <div class="content_post" style="background-image: url(<%= @tweet.image %>);">
+      <% if user_signed_in? && current_user.id == @tweet.user_id %>
+        <div class="more">
+          <ul class="more_list">
+            <li>
+              <%= link_to '編集', "/tweets/#{@tweet.id}/edit", method: :get %>
+            </li>
+            <li>
+              <%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+      <%= simple_format(@tweet.text) %>
+      <span class="name">
+        <a href="/users/<%= @tweet.user.id %>">
+          <span>投稿者</span><%= @tweet.user.nickname %>
+        </a>
+      </span>
   </div>
   <div class="container">
     <% if current_user %>
-      <%= form_with(url:"/tweets/#{@tweet.id}/comments", method: :post) do |f| %>
-        <%= f.text_area :text,placeholder: "コメントする", name: "text", style: {cols: 30, rows: 10} %>
-        <%= f.submit "SENT" %>
-      <% end %>
+      <div class="jumbotron bg-light py-3">
+        <%= form_with(url:"/tweets/#{@tweet.id}/comments",locar: true) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :text,placeholder: "コメントする", name: "text", style: {cols: 30, rows: 10} %>
+          </div>
+          <%= f.submit "送信" ,class: 'text-light btn btn-primary btn-lg' %>
+        <% end %>
+      </div>
     <% end %>
     <div class="comments">
       <h4>＜コメント一覧＞</h4>
