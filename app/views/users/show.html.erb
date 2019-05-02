@@ -4,14 +4,16 @@
       <div class="d-flex">
         <% @tweets.each do |tweet| %>
           <div class="card h-100 card-img-top">
-              <div class="jumbotron w-100 mt-0 mb-2" style="background: url(<%= tweet.image %>); background-size: cover;">
-              </div>
-              <div class="card-body p-0">
-                <div class="card-title">
-                  <h3 class="lead"><%= simple_format(tweet.text) %></h3>
-                </div>
+            <div class="jumbotron w-100 mt-0 mb-2" style="background: url(<%= tweet.image %>); background-size: cover;">
+            </div>
+            <div class="card-body p-0">
+              <div class="card-title">
+                <h3 class="lead">
+                  <%= simple_format(tweet.text) %>
+                </h3>
               </div>
             </div>
+          </div>
         <% end %>
       </div>
       <ul class="pagination">

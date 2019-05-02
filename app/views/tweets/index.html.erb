@@ -2,25 +2,26 @@
 <html lang="js">
 
 <body>
-
-    <header class="jumbotron py-3">
-        <h3 class="display-6 text-primary">ようこそMeL-boothへ<br /></h3>
-        <p class="lead">コメントよろしく〜</p>
-    </header>
-
-      <div class="d-flex">
-        <% @tweets.each do |tweet| %>
-          <%= render partial: "tweet", locals: { tweet: tweet } %>
-        <% end %>
-      </div>
-      <nav aria-label=" ">
-        <ul class="pagination">
-          <li class="page-item mx-5" >
-            <%= will_paginate @tweets, render: BootstrapPagination::Rails, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-          </li>
-        </ul>
-      </nav>
-
+  <header class="jumbotron py-3">
+    <h3 class="display-6 text-primary">
+      ようこそMeL-boothへ<br />
+    </h3>
+    <p class="lead">
+      コメントよろしく〜
+    </p>
+  </header>
+  <div class="d-flex">
+    <% @tweets.each do |tweet| %>
+      <%= render partial: "tweet", locals: { tweet: tweet } %>
+    <% end %>
+  </div>
+  <nav aria-label=" ">
+    <ul class="pagination">
+      <li class="page-item mx-5" >
+        <%= will_paginate @tweets, render: BootstrapPagination::Rails, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+      </li>
+    </ul>
+  </nav>
 </body>
 
 </html>

@@ -3,27 +3,27 @@
     <div class="card mb-1" style="background: url(<%= @tweet.image %>); background-size: cover;">
     </div>
     <% if user_signed_in? && current_user.id == @tweet.user_id %>
-        <div class="more w-50 h-auto">
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= simple_format(@tweet.text) %>
-            </h5>
-          <p class="card-text">
-            <a href="/users/<%= @tweet.user.id %>">
-              <span>投稿者</span><%= @tweet.user.nickname %>
-            </a>
-          </p>
-          </div>
-          <ul class="more_list pl-3">
-            <li class="btn btn-primary">
-              <%= link_to '編集', "/tweets/#{@tweet.id}/edit",style:"color:white;", method: :get %>
-            </li>
-            <li class="btn btn-primary">
-              <%= link_to '削除', "/tweets/#{@tweet.id}", style:"color:white;",method: :delete %>
-            </li>
-          </ul>
+      <div class="more w-50 h-auto">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= simple_format(@tweet.text) %>
+          </h5>
+        <p class="card-text">
+          <a href="/users/<%= @tweet.user.id %>">
+            <span>投稿者</span><%= @tweet.user.nickname %>
+          </a>
+        </p>
         </div>
-      <% end %>
+        <ul class="more_list pl-3">
+          <li class="btn btn-primary">
+            <%= link_to '編集', "/tweets/#{@tweet.id}/edit",style:"color:white;", method: :get %>
+          </li>
+          <li class="btn btn-primary">
+            <%= link_to '削除', "/tweets/#{@tweet.id}", style:"color:white;",method: :delete %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
   </div>
   <div class="container">
     <% if current_user %>
