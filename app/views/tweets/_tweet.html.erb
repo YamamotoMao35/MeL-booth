@@ -1,0 +1,16 @@
+<div class="col-lg-3 col-md-3 mb-4 border-secondary">
+  <div class="card h-100 card-img-top">
+    <div class="jumbotron w-100 mt-0 mb-2 " style="background: url(<%= tweet.image %>); background-size: cover;">
+    </div>
+    <div class="card-body p-0">
+      <div class="card-title">
+        <h3 class="lead"><%= simple_format(tweet.text) %></h3>
+      </div>
+    </div>
+    <div class="card-footer">
+      <li class="btn btn-primary">
+        <%= link_to '詳細', "/tweets/#{tweet.id}",style:"color:white;",method: :get %>
+      </li>
+    </div>
+  </div>
+</div>
