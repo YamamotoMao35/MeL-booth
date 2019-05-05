@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
 
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: :index
 
   def index
     @tweets = Tweet.includes(:user).paginate(page: params[:page], per_page: 4).order('created_at DESC')
