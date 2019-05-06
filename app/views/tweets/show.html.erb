@@ -1,42 +1,52 @@
 <div class ="contents row">
-  <div class="content_post" style="background-image: url(<%= @tweet.image %>);">
-    <% if user_signed_in? && current_user.id == @tweet.user_id %>
-      <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
-      <ul class="more_list">
-        <li>
-          <%= link_to '編集', "/tweets/#{@tweet.id}/edit", method: :get %>
-        </li>
-        <li>
-          <%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete %>
-        </li>
-      </ul>
+  <div class="jumbotron d-flex ml-2 w-75 h-auto">
+    <div class="card mb-1" style="background: url(<%= @tweet.image %>); background-size: cover;">
     </div>
+    <% if user_signed_in? && current_user.id == @tweet.user_id %>
+      <div class="more w-50 h-auto">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= simple_format(@tweet.text) %>
+          </h5>
+        <p class="card-text">
+          <a href="/users/<%= @tweet.user.id %>">
+            <span>投稿者</span><%= @tweet.user.nickname %>
+          </a>
+        </p>
+        </div>
+        <ul class="more_list pl-3">
+          <li class="btn btn-primary">
+            <%= link_to '編集', "/tweets/#{@tweet.id}/edit",style:"color:white;", method: :get %>
+          </li>
+          <li class="btn btn-primary">
+            <%= link_to '削除', "/tweets/#{@tweet.id}", style:"color:white;",method: :delete %>
+          </li>
+        </ul>
+      </div>
     <% end %>
-    <%= simple_format(@tweet.text) %>
-    <span class="name">
-      <a href="/users/<%= @tweet.user.id %>">
-        <span>投稿者</span><%= @tweet.user.nickname %>
-      </a>
-    </span>
   </div>
   <div class="container">
     <% if current_user %>
-      <%= form_with(url:"/tweets/#{@tweet.id}/comments", method: :post) do |f| %>
-        <%= f.text_area :text,placeholder: "コメントする", name: "text", style: {cols: 30, rows: 10} %>
-        <%= f.submit "SENT" %>
-      <% end %>
-    <% end %>
-    <div class="comments">
-      <h4>＜コメント一覧＞</h4>
-      <% if @comments %>
-        <% @comments.each do |comment| %>
-          <p>
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></strong>
-            <%= comment.text %>
-          </p>
+      <div class="jumbotron bg-light py-3 mt-4 float-left d-flex">
+        <%= form_with(url:"/tweets/#{@tweet.id}/comments",locar: true) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :text,placeholder: "コメントする", name: "text",size: "20x5", style: {cols: 30, rows: 10} %>
+          </div>
+          <%= f.submit "送信" ,class: 'text-light btn btn-primary btn-lg' %>
         <% end %>
-      <% end %>
-    </div>
+      <div class="ml-4">
+        <div class="comments">
+          <h4>＜コメント一覧＞</h4>
+          <% if @comments %>
+            <% @comments.each do |comment| %>
+              <p>
+                <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></strong>
+                <%= comment.text %>
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -1,21 +1,22 @@
 class TweetsController < ApplicationController
 
-  before_action :move_to_index, except: [:index]
+  before_action :move_to_index, except: :index
 
   def index
-    @tweets = Tweet.includes(:user).page(params[:page]).per(10).order('created_at DESC')
+    @tweets = Tweet.includes(:user).paginate(page: params[:page], per_page: 4).order('created_at DESC')
+  end
+
+  def new
+    @tweet = Tweet.new
+  end
+
+  def create
+    @tweet = Tweet.create(tweet_params)
   end
 
   def show
     @tweet = Tweet.find(params[:id])
     @comments = @tweet.comments.includes(:user)
-  end
-
-  def new
-  end
-
-  def create
-    Tweet.create(tweet_params)
   end
 
   def destroy
@@ -42,7 +43,7 @@ class TweetsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path unless user_signed_in?
+    redirect_to action: :index unless user_signed_in?
   end
 
 end

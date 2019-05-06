@@ -1,6 +1,27 @@
-<div class="contents row">
-  <% @tweets.each do |tweet| %>
-    <%= render partial: "tweet", locals: {tweet: tweet} %>
-  <% end %>
-  <%= paginate(@tweets) %>
-</div>
+<!DOCTYPE html>
+<html lang="js">
+
+<body>
+  <header class="jumbotron jumbotron-extend py-3">
+    <h3 class="display-6 text-white">
+      ようこそMeL-boothへ<br />
+    </h3>
+    <p class="lead text-white">
+      コメントよろしく〜
+    </p>
+  </header>
+  <div class="d-flex">
+    <% @tweets.each do |tweet| %>
+      <%= render partial: "tweet", locals: { tweet: tweet } %>
+    <% end %>
+  </div>
+  <nav aria-label=" ">
+    <ul class="pagination">
+      <li class="page-item mx-5" >
+        <%= will_paginate @tweets, render: BootstrapPagination::Rails, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+      </li>
+    </ul>
+  </nav>
+</body>
+
+</html>
